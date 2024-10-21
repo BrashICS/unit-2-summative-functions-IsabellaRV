@@ -40,3 +40,21 @@ function vertex() {
 
 }
 
+// Part 1 Task
+function delta(a, b) {
+    return (a - b);
+}
+
+function slope(x1, y1, x2, y2) {
+    let m = delta(y2 , y1) / delta(x2 , x1)
+    return m;
+}
+
+function average(n1, n2) {
+    return (n1 + n2) / 2;
+}
+
+function length(x1, y1, x2, y2) {
+    let l = Math.sqrt(delta(x2 , x1)**2 + delta(y2 , y1)**2)
+    return l;
+}
