@@ -59,7 +59,7 @@ function length(x1, y1, x2, y2) {
     return l;
 }
 
-function rect_prism_volume(length, width, height) {
+function rect_prism_volume() {
     let length = document.getElementById("length").value;
     let width = document.getElementById("width").value;
     let height = document.getElementById("height").value;
