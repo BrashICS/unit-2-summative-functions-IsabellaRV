@@ -11,18 +11,18 @@
 /*** Event Listeners ***/
 document.getElementById("zeros").addEventListener("click", zeros);
 document.getElementById("vertex").addEventListener("click", vertex);
+document.getElementById("rect_prism").addEventListener("click", rect_prism_volume);
 
 /*** Functions ***/
 
 // Round to the nearest `decimals` number of decimals
-function round(value, decimals) {
-    return Math.round(value * 10**decimals) / 10**decimals;
-}
 
 // Round to the user's number of decimals
 function round_user(value) {
     // Get the number of decimals from the "rounding" box
-    let d = Number(document.getElementById("rounding").value)
+    let decimals = Number(document.getElementById("rounding").value)
+    let user_number = Math.round(value * 10**decimals) / 10**decimals
+    return user_number
 
 }
 
@@ -58,3 +58,12 @@ function length(x1, y1, x2, y2) {
     let l = Math.sqrt(delta(x2 , x1)**2 + delta(y2 , y1)**2)
     return l;
 }
+
+function rect_prism_volume(length, width, height) {
+    let length = document.getElementById("length").value;
+    let width = document.getElementById("width").value;
+    let height = document.getElementById("height").value;
+    let answer = Number(round_user(length * width * height))
+    document.getElementById("result").textContent = `The volume of the rectangular prism is: ${answer}`
+}
+
