@@ -17,6 +17,7 @@ document.getElementById("sphere_vol").addEventListener("click" , sphere_volume);
 document.getElementById("sphere_area").addEventListener("click" , sphere_area);
 document.getElementById("slope").addEventListener("click" , slope);
 document.getElementById("line_l").addEventListener("click" , line_length);
+document.getElementById("mid_p").addEventListener("click" , midpoint);
 
 /*** Functions ***/
 
@@ -33,16 +34,28 @@ function round_user(value) {
 
 // Calculate the y-value of a parabola from standand form
 function y_quad(a, b, c, x) {
-
+let y = Number(a * x**2 + b * x + c)
+return y;
 }
 
 // Determine the zeros of a quadratic using user-inputs for a, b, and c
 function zeros() {
+    let a = Number(document.getElementById("a").value);
+    let b = Number(document.getElementById("b").value);
+    let c = Number(document.getElementById("c").value);
+    let x_1 = round_user(((-b) +(Math.sqrt((b ** 2) - (4 * a * c))))/ (2 * a));
+    let x_2 = round_user(((-b) -(Math.sqrt((b ** 2) - (4 * a * c))))/ (2 * a));
+    document.getElementById("quadratic_output").textContent = `The zeros are: (${x_1}, 0) and (${x_2}, 0)`;
 }
 
 // Determine the vertex of a quadratic using user-inputs for a, b, and c
 function vertex() {
-
+    let a = Number(document.getElementById("a").value);
+    let b = Number(document.getElementById("b").value);
+    let c = Number(document.getElementById("c").value);
+    let x = Number(round_user((-b) / (2*a)));
+    let ver = y_quad(a, b, c, x);
+    document.getElementById("quadratic_output").textContent = `The vertex is: (${x}, ${ver})`;
 }
 
 // Part 1 Task
@@ -93,9 +106,12 @@ function sphere_area() {
 }
 
 function midpoint() {
-    let x1 = document.getElementById("x1").value;
-    let x2 = document.getElementById("x2").value;
-    let y1 = document.getElementById("y1").value;
-    let y2 = document.getElementById9("y2").value;
-    let midP = Number(round_user(average()))
+    let x1 = Number(document.getElementById("x1").value);
+    let x2 = Number(document.getElementById("x2").value);
+    let y1 = Number(document.getElementById("y1").value);
+    let y2 = Number(document.getElementById("y2").value);
+    let midP_x = Number(round_user(average(x1 , x2)));
+    let midP_y = Number(round_user(average(y1 , y2)));
+    document.getElementById("line_result").textContent = `The midpoint is: (${midP_x}, ${midP_y})`
 }
+
